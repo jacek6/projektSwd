@@ -1,0 +1,92 @@
+\documentclass[hidelinks,12pt]{article}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{polski}
+\usepackage[margin=25mm]{geometry}
+\linespread{1}
+\titleformat*{\section}{\fontsize{14pt}{2}\bfseries}
+\titleformat*{\subsection}{\fontsize{13pt}{2}\bfseries}
+\titleformat*{\subsubsection}{\fontsize{13pt}{2}\bfseries}
+\usepackage[T1]{fontenc}
+\usepackage{tgtermes}
+\usepackage{amsmath}
+\numberwithin{figure}{section} % numeruj rysunki: nr rusunku, nr rozdziału
+\numberwithin{equation}{section} % numeruj równania w obebie sekcji
+\numberwithin{table}{section} % numeruj tabele w obebie sekcji
+\usepackage{dirtree}
+\usepackage[]{algorithm2e}
+\usepackage{pdfpages}
+\SetKwInput{KwData}{Dane}
+%\SetAlgorithmName{Algorytm}{algorytm}{Lista algorytmów}
+\SetKwInput{KwResult}{Wynik}
+\usepackage[parfill]{parskip}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{multirow} % żeby się nie wykrzaczało na \backslashbox
+\usepackage{tabularx} % rozszerzon obsługa tabel
+%\usepackage{diagbox} % obsługa przekątnych w tabelach
+%\newcolumntype{R}{>{\raggedleft\arraybackslash}X} % definicja tabeli rozciągniętej do szerokości strony
+\graphicspath{ {gfx/} }
+
+%\setlength\parindent{24pt} % wcięcia akapitów
+%\usepackage{indentfirst} % wcięcia pierwszych akapitów w rozdziale
+
+\usepackage{amsmath}
+
+\newcommand{\fig}[3]{
+\begin{figure}
+\centering
+\includegraphics[ width=\textwidth]{#1}
+\caption{#2}
+\label{#3}
+\end{figure}
+}
+
+\author{inż. Jacek Skoczylas 203239 \\inż. Tomasz Wawrzyniak 203341}
+\title{Projekt Konduktor\\
+Rozwiązanie problemu Konduktora techniką programowania dynamicznego}
+\frenchspacing
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Wstęp}
+Projekt polegał na wybraniu tematu, opracowaniu modelu, a następnie zaimplementowaniu aplikacji z wykorzystaniem metody programowania dynamicznego.
+Dodatkowo rozwiązanie to zostało porównane z analogicznym problemem rozwiązanym metodą brutalfore. Osteteczne wnioski zostały przedstawione w ostatnim punkcie pracy.
+
+\section{Analiza problemu}
+Problem konduktora polega na optymalnym doborze odcinków na których odbędzie się kontrola biletów. Z punktu widzenia PKP najlepiej by kontrol była by wykonywana najczęściej tak by skontrolować wszystkie bilety. Niestety dokonywanie kontroli na każdym przystanku nie jest jest możliwe z powodów czasowych. Konduktor musiał by wielokrotnie przechodzić przez cały pociąg oraz ponownie weryfikować bilety, co więcej musiał by też mieć czas na sprzedaż biletów. Dlatego też należy przeprowadzać z góry założoną liczbę kontroli na odpowiednio dobranych odcinkach  tak by maksymalizować liczbę sprawdzonych kontroli. Dodatkowo dane statystyczne ilości wchodzących i wychodzących klientów są znane oraz dostarczane na bierząco przez zewnętrzny system.
+
+\subsection{Model matematyczny}
+un - numer kolejnej stacji, takiej że tuż po jej opuszczeniu nastąpi kontrola biletów, ciąg un jest ciągiem rosnącym
+xn - numer poprzedniej stacji w jakiej następowała kontrola biletów
+N - liczba kontroli biletów do wykonania na całej trasie
+yn - ilość skontrolowanych biletów, które nie były wcześniej skontrolowane w ostatniej kontroli
+
+Liczbę pasażerów, którzy jadą od danej stacji do danej stacji opisuje macierz X, w której Xi,j oznacza liczbę pasażerów jaka wsiadła na stacji i i wysiada na stacji j
+un, xn, N, yn, Xi, jLiczby naturalne nieujemne, dla każdego i, j.
+
+xn+1=un
+yn = i = xnunj = unnXi, j
+
+
+\subsection{Dane wejściowe-wyjściowe}
+Dane wejściowe:
+n - liczba kontroli która musi zostać przeprowadzona
+X - macierz zawierająca dane z systemu
+
+\section{Prezentacja aplikacji}
+
+
+\section{Porównanie z techniką brutalforce}
+
+\section{Wnioski}
+
+\end{document}
